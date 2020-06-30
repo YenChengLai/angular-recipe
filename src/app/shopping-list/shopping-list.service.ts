@@ -8,15 +8,14 @@ export class ShoppingListService {
 
   @Output() ingredientChange = new EventEmitter<Ingredient[]>();
 
-  private ingredients: Ingredient[] = [
-    new Ingredient('Apple', 5),
-    new Ingredient('Banana', 10)
-  ];
+  private ingredients: Ingredient[] = [];
 
   constructor() { }
 
   getIngredients() {
-    return this.ingredients.slice();
+    return this.ingredients.slice().sort((pre, curr) => {
+      return pre.name.substr(0, 1).toLowerCase().charCodeAt(0) - curr.name.substr(0, 1).toLowerCase().charCodeAt(0);
+    });
   }
 
   addIngredient(ingredient: Ingredient) {
@@ -25,9 +24,6 @@ export class ShoppingListService {
   }
 
   addIngredients(ingredients: Ingredient[]) {
-    // for (let ingredient of ingredients) {
-    //   this.addIngredient(ingredient);
-    // }
     this.ingredients.push(...ingredients);
     this.ingredientChange.emit(this.ingredients.slice());
   }
