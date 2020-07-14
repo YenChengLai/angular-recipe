@@ -10,7 +10,6 @@ import { NgForm } from '@angular/forms';
 })
 export class ShoppingEditComponent implements OnInit {
 
-
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
