@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class ShoppingListService {
 
   ingredientChange = new Subject<Ingredient[]>();
+  startedEditing = new Subject<number>();
 
   private ingredients: Ingredient[] = [];
 
@@ -17,6 +18,10 @@ export class ShoppingListService {
     return this.ingredients.slice().sort((pre, curr) => {
       return pre.name.substr(0, 1).toLowerCase().charCodeAt(0) - curr.name.substr(0, 1).toLowerCase().charCodeAt(0);
     });
+  }
+
+  getIngredient(index: number) {
+    return this.ingredients[index];
   }
 
   addIngredient(ingredient: Ingredient) {
