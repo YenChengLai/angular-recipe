@@ -15,9 +15,7 @@ export class ShoppingListService {
   constructor() { }
 
   getIngredients() {
-    return this.ingredients.slice().sort((pre, curr) => {
-      return pre.name.substr(0, 1).toLowerCase().charCodeAt(0) - curr.name.substr(0, 1).toLowerCase().charCodeAt(0);
-    });
+    return this.ingredients.slice().sort();
   }
 
   getIngredient(index: number) {
