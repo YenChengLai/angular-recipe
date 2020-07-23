@@ -22,7 +22,7 @@ export class DataStorageService {
   fetchRecipes() {
     this.http.get<Recipe[]>('https://ng-recipe-6cb45.firebaseio.com/recipes.json').pipe(map(recipes => {
       return recipes.map(recipe => {
-        return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] }
+        return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
       });
     })).subscribe(recipes => {
       this.recipeService.setRecipes(recipes);
