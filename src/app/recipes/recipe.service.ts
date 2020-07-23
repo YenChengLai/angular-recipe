@@ -18,7 +18,7 @@ export class RecipeService {
   //     'https://tinyurl.com/yabnwsow', [new Ingredient('pasta', 1), new Ingredient('tomato', 3)])
   // ];
 
-  private recipes: Recipe[];
+  private recipes: Recipe[] = [];
 
   constructor(private shoppingListService: ShoppingListService) { }
 
