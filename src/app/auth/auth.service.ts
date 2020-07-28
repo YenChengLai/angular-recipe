@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError, Subject } from 'rxjs';
+import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 
 export interface AuthResponseData {
@@ -19,7 +19,8 @@ export interface AuthResponseData {
 })
 export class AuthService {
 
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
+  token = null;
 
   constructor(private http: HttpClient) { }
 
@@ -27,8 +28,8 @@ export class AuthService {
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCPFGm54aDzDG2LQYbzUBBkUEQDGlkXQuM',
       {
-        email: { email },
-        password: { password },
+        email: email,
+        password: password,
         returnSecureToken: true
       }
     ).pipe(catchError(this.handleError), tap(resData => {
@@ -43,8 +44,8 @@ export class AuthService {
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCPFGm54aDzDG2LQYbzUBBkUEQDGlkXQuM',
       {
-        email: { email },
-        password: { password },
+        email: email,
+        password: password,
         returnSecureToken: true
       }
     ).pipe(catchError(this.handleError), tap(resData => {
