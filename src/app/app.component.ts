@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Angular-Recipe';
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {
+    this.authService.autoLogin();
+  }
 }
