@@ -10,7 +10,7 @@ import { ShareModule } from '../shared/share.module';
   ],
   imports: [
     RouterModule.forChild([{
-      path: 'auth', component: AuthComponent
+      path: '', component: AuthComponent
     }]),
     ShareModule,
     FormsModule
