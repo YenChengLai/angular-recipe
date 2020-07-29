@@ -8,6 +8,7 @@ import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecipseRoutingModule } from './recipes-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecipeEditComponent,
     RecipeStartComponent
   ],
+  imports: [
+    RouterModule,
+    CommonModule, // BrowserModule can allow components to use directives like ngFor.
+                  // But it should only be imported in app.module.ts.
+                  // We therefore use CommonModule instead.
+    ReactiveFormsModule,
+    RecipseRoutingModule
+  ],
   exports: [
     RecipesComponent,
     RecipeListComponent,
@@ -25,8 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecipeDetailComponent,
     RecipeEditComponent,
     RecipeStartComponent
-  ],
-  imports: [RouterModule, CommonModule, ReactiveFormsModule]
+  ]
 })
 export class RecipesModule {
 
