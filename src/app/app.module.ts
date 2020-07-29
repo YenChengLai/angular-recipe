@@ -12,6 +12,7 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { RecipesModule } from './recipes/recipes.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { ShareModule } from './shared/share.module';
+import { CoreModule } from './core.module';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,9 @@ import { ShareModule } from './shared/share.module';
     AppRoutingModule,
     RecipesModule,
     ShoppingListModule,
-    ShareModule
+    ShareModule,
+    CoreModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent],
   entryComponents: [AlertComponent]
 })
