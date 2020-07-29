@@ -6,9 +6,9 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipseRoutingModule } from './recipes-routing.module';
+import { ShareModule } from '../shared/share.module';
 
 @NgModule({
   declarations: [
@@ -21,11 +21,13 @@ import { RecipseRoutingModule } from './recipes-routing.module';
   ],
   imports: [
     RouterModule,
-    CommonModule, // BrowserModule can allow components to use directives like ngFor.
-                  // But it should only be imported in app.module.ts.
-                  // We therefore use CommonModule instead.
+    // CommonModule, // BrowserModule can allow components to use directives like ngFor.
+                     // But it should only be imported in app.module.ts.
+                     // We therefore use CommonModule instead.
+                     // It is now imported through ShareModule
     ReactiveFormsModule,
-    RecipseRoutingModule
+    RecipseRoutingModule,
+    ShareModule
   ]
 })
 export class RecipesModule {
